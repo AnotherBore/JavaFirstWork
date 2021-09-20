@@ -43,17 +43,28 @@ public class Input {
             System.out.println("Введите условие формата \"" + condition + "\".");
             input = scanner.nextLine();
             inputWS = input.split(" ");
-            if (inputWS[0].equals(">") || inputWS[0].equals("<"))
-                correctInput = true;
+            if (mode == 1){
+                if (inputWS[0].equals(">") || inputWS[0].equals("<"))
+                    correctInput = true;
+                else {
+                    correctInput = false;
+                    continue;
+                }
+            }
             else{
-                correctInput = false;
-                continue;
+                if (inputWS[0].equals("=") || inputWS[0].equals("<>"))
+                    correctInput = true;
+                else {
+                    correctInput = false;
+                    continue;
+                }
             }
-            try{
-                number = Integer.parseInt(inputWS[1]);
-            } catch (NumberFormatException e) {
-                correctInput = false;
-            }
+                try {
+                    number = Integer.parseInt(inputWS[1]);
+                } catch (NumberFormatException e) {
+                    correctInput = false;
+                }
+
         } while (!correctInput);
         return inputWS;
     }
