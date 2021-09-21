@@ -25,7 +25,7 @@ public class Task1 {
 
 
     public static void userI(){
-        int[] array = Input.chooseHowFillMassive();
+        int[] array = Input.chooseHowFillArray();
         String[] condition = Input.withCondition(1);
         moreOrLessThan(array, condition);
     }

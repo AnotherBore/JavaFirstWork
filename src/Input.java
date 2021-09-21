@@ -2,16 +2,6 @@ import java.util.Scanner;
 
 public class Input {
     public static Scanner scanner = new Scanner(System.in);
-    public static int[] array(){
-        System.out.println("Сколько элементов содержится в массиве?");
-        int elements = Input.integer();
-        int[] array = new int[elements];
-        System.out.println("Введите элементы массива (каждый в новой строке)");
-        for (int i = 0; i < elements; i++){
-            array[i] = Input.integer();
-        }
-        return array;
-    }
 
     public static int integer(){
         String input;
@@ -69,7 +59,32 @@ public class Input {
         return inputWS;
     }
 
-    public static int[] chooseHowFillMassive() {
+    public static int[] stringWithNumbers() {
+        boolean correctInput = false;
+        String input;
+        String[] numbers;
+        int[] array = {0};
+
+        while(!correctInput){
+            correctInput = true;
+            System.out.println("Введите строку с числами, разделенными пробелами.");
+            input = scanner.nextLine();
+            numbers = input.split(" ");
+            array = new int[numbers.length];
+            for(int i = 0; i < numbers.length; i++){
+                try {
+                    array[i] = Integer.parseInt(numbers[i]);
+                }catch(NumberFormatException e){
+                    System.out.println("Строка не соответсвует требованиям!");
+                    correctInput = false;
+                    break;
+                }
+            }
+        }
+        return array;
+    }
+
+    public static int[] chooseHowFillArray() {
         int[] array = {10, 7, 100, 15, 4, 0, 11};
         int choice;
         do {
@@ -79,7 +94,7 @@ public class Input {
         if(choice == 1) {
             System.out.println("Будет использован существующий массив");
         }
-        else array = Input.array();
+        else array = Input.stringWithNumbers();
         Main.writeArray(array);
         return array;
     }

@@ -22,7 +22,7 @@ public class Task2 {
         else System.out.println(newList);
     }
     public static void userI(){
-        int[] array = Input.chooseHowFillMassive();
+        int[] array = Input.chooseHowFillArray();
         String[] condition = Input.withCondition(2);
         isEqual(array, condition);
     }
